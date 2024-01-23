@@ -16,7 +16,7 @@
   hosts: lb
   become: yes
   tasks:
-    - name: Update apt repo
+   -  name: Update apt repo
       apt: 
         update_cache: yes
 
