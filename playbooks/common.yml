@@ -1,7 +1,8 @@
 ---
 - name: update web, nfs and db servers
   hosts: webservers, nfs, db
-  become: yes
+  become: true
+  become_user: root
   tasks:
     - name: ensure wireshark is at the latest version
       apt:
@@ -12,6 +13,7 @@
 - name: update LB server
   hosts: lb
   become: yes
+  become_user: root
   tasks:
     - name: Update apt repo
       apt: 
