@@ -2,6 +2,7 @@
 - name: update web, nfs and db servers
   hosts: webservers, nfs, db
   become: yes
+  task:
   - name: Update apt repo
       apt: 
         update_cache: yes
@@ -12,7 +13,6 @@
         name: wireshark
         state: latest
    
-
 - name: update LB server
   hosts: lb
   become: yes
