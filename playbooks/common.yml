@@ -9,12 +9,15 @@
         state: latest
    
 
-- name: update lb server
+- name: update LB server
   hosts: lb
   become: yes
   tasks:
-    - name: ensure wireshark is at the latest version
+    - name: Update apt repo
       apt: 
+        update_cache: yes
+
+    - name: ensure wireshark is at the latest version
+      apt:
         name: wireshark
         state: latest
-
