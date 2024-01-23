@@ -1,5 +1,5 @@
 ---
-- name: update webservers, nfs and db 
+- name: update web, nfs and db servers
   hosts: webservers, nfs, db
   become: yes
   tasks:
@@ -9,7 +9,7 @@
         state: latest
    
 
-- name: update lb 
+- name: update lb server
   hosts: lb
   become: yes
   tasks:
