@@ -1,3 +1,13 @@
 
 [lb]
 172.31.85.37 ansible_ssh_user=ubuntu
+
+[nfs]
+172.31.84.224 ansible_ssh_user=ubuntu
+
+[webservers]
+172.31.92.143 ansible_ssh_user=ubuntu
+172.31.90.151 ansible_ssh_user=ubuntu
+
+[db]
+172.31.87.165 ansible_ssh_user=ubuntu
