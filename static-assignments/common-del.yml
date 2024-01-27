@@ -7,8 +7,11 @@
   tasks:
   - name: delete wireshark
     apt:
-      name: wireshark
+      name: wireshark-qt
       state: removed
+      autoremove: yes
+      purge: yes  
+      autoclean: yes
 
 - name: update LB server
   hosts: lb
