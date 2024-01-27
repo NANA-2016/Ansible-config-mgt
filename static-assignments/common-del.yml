@@ -7,7 +7,7 @@
   tasks:
   - name: delete wireshark
     apt:
-      name: wireshark-qt
+      name: wireshark
       state: removed
       autoremove: yes
       purge: yes  
