@@ -8,11 +8,8 @@
   - name: delete wireshark
     apt:
       name: wireshark
-      state: removed
-      autoremove: yes
-      purge: yes  
-      autoclean: yes
-
+      state: remove
+      
 - name: update LB server
   hosts: lb
   remote_user: ubuntu
