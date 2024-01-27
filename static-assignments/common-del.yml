@@ -1,14 +1,18 @@
 ---
 - name: update web, nfs and db servers
   hosts: webservers, nfs, db
-  remote_user: ubuntu
+  remote_user: ec2-user
   become: yes
   become_user: root
   tasks:
   - name: delete wireshark
     apt:
-      name: wireshark
-      state: remove
+      name: wireshark-qt
+      state: absent
+      autoremove: yes
+      purge: yes
+      autoclean: yes
+
       
 - name: update LB server
   hosts: lb
