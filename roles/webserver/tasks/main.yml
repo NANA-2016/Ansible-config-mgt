@@ -12,7 +12,7 @@
 - name: clone a repo
   become: true
   ansible.builtin.git:
-    repo: https://github.com/faith/tooling.git
+    repo: https://github.com/NANA-2016/tooling.git
     dest: /var/www
     force: yes
 - name: copy html content to one level up
