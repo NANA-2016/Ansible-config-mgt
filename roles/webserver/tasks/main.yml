@@ -18,7 +18,6 @@
     dest: /var/www/html
     force: yes
 
-
 - name: Start service apache2, if not started
   become: true
   ansible.builtin.service:
