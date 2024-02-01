@@ -1,5 +1,7 @@
+
+
 ---
-- name: install apache2
+- name: install apache
   become: true
   ansible.builtin.apt:
     name: "apache2"
@@ -15,17 +17,20 @@
   become: true
   ansible.builtin.git:
     repo: https://github.com/faith/tooling.git
-    dest: /var/www/html
+    dest: /home/ubuntu
     force: yes
 
+- name: copy html content to one level up
+  become: true
+  command: cp -r /home/ubuntu/tooling/html /var/www/
 - name: Start service apache2, if not started
   become: true
   ansible.builtin.service:
     name: apache2
     state: started
-
-- name: recursively remove /var/www/html/html/ directory
-  become: true
-  ansible.builtin.file:
-    path: /var/www/html/html
-    state: absent
+    
+#- name: recursively remove /var/www/html/html/ directory
+#  become: true
+#  ansible.builtin.file:
+#   path: /var/www/html/html
+#    state: absent
