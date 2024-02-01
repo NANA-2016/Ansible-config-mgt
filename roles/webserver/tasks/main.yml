@@ -26,7 +26,7 @@
   ansible.builtin.service:
     name: apache2
     state: started
-    
+
 #- name: recursively remove /var/www/html/html/ directory
 #  become: true
 #  ansible.builtin.file:
