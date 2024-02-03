@@ -1,13 +1,49 @@
+# ---
+# - name: install apache
+#   become: true
+#   ansible.builtin.apt:
+#     name: "apache2"
+#     state: latest
+
+# - name: install git
+#   become: true
+#   ansible.builtin.apt:
+#     name: "git"
+#     state: present
+
+# - name: clone a repo
+#   become: true
+#   ansible.builtin.git:
+#     repo: https://github.com/NANA-2016/tooling.git
+#     dest: /var/www
+#     force: yes
+
+# # - name: copy html content to one level up
+# #   become: true
+# #   command: cp -r /var/www/tooling/html /var/www/
+
+# - name: Start service apache2, if not started
+#   become: true
+#   ansible.builtin.service:
+#     name: apache2
+#     state: started
+
+# # - name: recursively remove /var/www/html/html/ directory
+# #   become: true
+# #   ansible.builtin.file:
+# #     path: /var/www/tooling/html
+# #     state: absent
+
 ---
 - name: install apache
   become: true
-  ansible.builtin.apt:
-    name: "apache2"
-    state: latest
+  ansible.builtin.yum:
+    name: "httpd"
+    state: present
 
 - name: install git
   become: true
-  ansible.builtin.apt:
+  ansible.builtin.yum:
     name: "git"
     state: present
 
@@ -15,22 +51,22 @@
   become: true
   ansible.builtin.git:
     repo: https://github.com/NANA-2016/tooling.git
-    dest: /var/www
+    dest: /var/www/html
     force: yes
 
-# - name: copy html content to one level up
-#   become: true
-#   command: cp -r /var/www/tooling/html /var/www/
+- name: copy html content to one level up
+  become: true
+  command: cp -r /var/www/html/html/ /var/www/
 
-- name: Start service apache2, if not started
+- name: Start service httpd, if not started
   become: true
   ansible.builtin.service:
-    name: apache2
+    name: httpd
     state: started
 
-# - name: recursively remove /var/www/html/html/ directory
-#   become: true
-#   ansible.builtin.file:
-#     path: /var/www/tooling/html
-#     state: absent
+- name: recursively remove /var/www/html/html/ directory
+  become: true
+  ansible.builtin.file:
+    path: /var/www/html/html
+    state: absent
 
