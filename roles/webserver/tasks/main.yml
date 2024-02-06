@@ -70,3 +70,7 @@
     path: /var/www/html/html
     state: absent
 
+- hosts: database
+  roles:
+    - role: geerlingguy.mysql
+      become: yes
