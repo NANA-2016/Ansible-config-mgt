@@ -5,8 +5,9 @@
 #- import_playbook: ../static-assignments/common-del.yml
 
 ---
-#- hosts: all
-#- import_playbook: ../static-assignments/common.yml
+- hosts: db
+ name: installing db
+- import_playbook: ../static-assignments/db.yml
 
 # - hosts: uat-webservers
 # - import_playbook: ../static-assignments/uat-webservers.yml
@@ -24,5 +25,3 @@
 # - name: Webserver assignment
 #   import_playbook: ../static-assignments/webservers.yml
 
-[db]
-172.31.87.165 ansible_ssh_user='ubuntu'
