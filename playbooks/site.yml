@@ -5,29 +5,34 @@
 #- import_playbook: ../static-assignments/common-del.yml
 
 ---
-- hosts: db
- name: installing db
-- import_playbook: ../static-assignments/db.yml
+#- hosts: db
+# name: installing db
+#- import_playbook: ../static-assignments/db.yml
 
 # - hosts: uat-webservers
 # - import_playbook: ../static-assignments/uat-webservers.yml
 
 # ---
-# - hosts: all
-# - name: Include dynamic variables 
-#   tasks:
-#   import_playbook: ../static-assignments/common.yml 
-#   include: ../dynamic-assignments/env-vars.yml
-#   tags:
-#     - always
+ - hosts: all
+- name: Include dynamic variables 
+   tasks:
+   import_playbook: ../static-assignments/common.yml 
+   include: ../dynamic-assignments/env-vars.yml
+   tags:
+     - always
 
-# -  hosts: webservers
-# - name: Webserver assignment
-#   import_playbook: ../static-assignments/webservers.yml
+ -  hosts: webservers
+ - name: Webserver assignment
+   import_playbook: ../static-assignments/webservers.yml
 
-- hosts: db-servers
-  become: yes
-  vars_files:
-    - vars/main.yml
-  roles:
-    - { role: geerlingguy.mysql }
+#- hosts: database
+ # roles:
+ #   - role: geerlingguy.mysql
+   #   become: yes
+
+      - hosts: lb
+
+     - name: Loadbalancers assignment
+       hosts: lb
+         - import_playbook: ../static-assignments/loadbalancers.yml
+        when: load_balancer_is_required 
